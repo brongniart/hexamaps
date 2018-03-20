@@ -1,4 +1,4 @@
-package hexamaps
+package maps
 
 import (
 	"fmt"
@@ -6,16 +6,18 @@ import (
 	"time"
 )
 
+import . "github.com/brongniart/hexamaps"
+
 func TestInMemoryMaps(t *testing.T) {
 
-	hexmap := CreateInMemoryMap(10, true)
+	hexmap := CreateInMemoryMap(1024)
 
-	prop, _ := hexmap.get(Coordinate{1024, -251, 0})
+	prop, _ := hexmap.get(CreateCoordinate(1024, -251))
 
 	fmt.Println(prop)
-	l := make([]*InMemoryMap, 10000)
+	l := make([]*InMemory, 10000)
 	for i := 0; i < 10000; i++ {
-		l[i] = CreateInMemoryMap(50, true)
+		l[i] = CreateInMemoryMap(50)
 	}
 
 	a := Coordinate{}
